@@ -9,8 +9,18 @@
   </head>
   <body>
     <h1>SKDD</h1>
+    <!-- <input type="file" /> -->
+    <img src="" id="image-upload-preview" width="400px" height="400px" />
+    <label for="image-upload">UPLOAD IMAGE</label>
+    <input
+      type="file"
+      name="Select file"
+      id="image-upload"
+      accept="image/*"
+      onchange="showPreview(event);"
+    />
     <button id="submit">submit</button>
-
+    <img src="" alt="" id="op" />
     <script src="js/tensor.js"></script>
   </body>
 </html>
