@@ -1,5 +1,5 @@
 const submit = document.getElementById("submit");
-
+let op = document.getElementById("op");
 let model;
 // const img = "/img/test.jpg";
 
@@ -54,9 +54,19 @@ const getPrediction = async (image) => {
       return b.probability - a.probability;
     })
     .slice(0, 3);
-  console.log(predictions);
+  // console.log(predictions[0]);
+  let prediction = predictions.sort((a, b) => b - a);
+  // console.log(prediction);
+  op.innerHTML = "";
+  for (let i = 0; i < 3; i++) {
+    const li = document.createElement("li");
+    let pred = prediction[i].toFixed(3) * 100;
+    li.innerText = pred + "%" + " - " + TARGET_CLASSES[i];
+    op.append(li);
+  }
 };
 // loadModel();
+const output = () => {};
 async function showPreview(event) {
   if (event.target.files.length > 0) {
     var src = URL.createObjectURL(event.target.files[0]);
