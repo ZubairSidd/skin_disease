@@ -4,7 +4,7 @@ let model;
 // const img = "/img/test.jpg";
 
 let TARGET_CLASSES = {
-  0: "akiec, Actinic Keratoses (Solar Keratoses) or intraepithelial Carcinoma (Bowen’s disease)",
+  0: "akiec, Actinic Keratoses",
   1: "bcc, Basal Cell Carcinoma",
   2: "bkl, Benign Keratosis",
   3: "df, Dermatofibroma",
@@ -53,15 +53,18 @@ const getPrediction = async (image) => {
     .sort(function (a, b) {
       return b.probability - a.probability;
     })
-    .slice(0, 3);
-  // console.log(predictions[0]);
-  let prediction = predictions.sort((a, b) => b - a);
+    .slice(0, 5);
+
+  // let prediction = predictions.sort((a, b) => b - a);
+  let classes = ["relative", "-mb-px", "block", "border", "p-4", "border-grey"];
   // console.log(prediction);
   op.innerHTML = "";
-  for (let i = 0; i < 3; i++) {
+
+  for (let i = 0; i < 5; i++) {
     const li = document.createElement("li");
-    let pred = prediction[i].toFixed(3) * 100;
-    li.innerText = pred + "%" + " - " + TARGET_CLASSES[i];
+    let pred = top5[i].probability.toFixed(3) * 100;
+    li.innerText = pred + "%" + " - " + top5[i].className;
+    li.classList.add(...classes);
     op.append(li);
   }
 };
@@ -73,6 +76,7 @@ async function showPreview(event) {
     var preview = document.getElementById("image-upload-preview");
     preview.src = src;
     preview.style.display = "block";
+    submit.style.display = "block";
   }
 }
 

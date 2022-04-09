@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
 }
 .container-inner {
-  /* background-color: antiquewhite; */
+  /* background-color: #fff6ea; */
   width: 50%;
   margin: auto;
   height: 100vh;
@@ -15,17 +15,25 @@ body {
   justify-content: center;
   align-items: center;
   /* border: 1px solid black; */
+  /* border-radius: 10px; */
 }
-
+#submit {
+  display: none;
+}
 .container-form {
   /* background-color: wheat; */
   display: grid;
+  height: 100%;
   justify-content: center;
   align-items: center;
   border: 5px dashed gray;
   max-height: 80%;
   padding: 2.5rem;
   border-radius: 10%;
+}
+
+.result {
+  margin: auto;
 }
 
 #image-upload {
