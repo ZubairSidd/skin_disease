@@ -55,3 +55,9 @@ a {
 footer {
   margin-top: auto;
 }
+
+.info{
+  line-height: 2rem !important;
+  letter-spacing: 0.1rem;
+  
+}
