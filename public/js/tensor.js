@@ -1,4 +1,5 @@
 const submit = document.getElementById("submit");
+let loading = document.querySelector(".lds-ellipsis");
 let op = document.getElementById("op");
 let model;
 // const img = "/img/test.jpg";
@@ -15,10 +16,12 @@ let TARGET_CLASSES = {
 
 const loadModel = async () => {
   console.log("Loading model...");
+  loading.style.display = "inline-block";
   await tf.loadLayersModel("models/model.json").then(function (tf) {
     model = tf;
   });
   console.log("Model loaded");
+  loading.style.display = "none";
   let image = document.getElementById("image-upload-preview");
 
   let tensorImg = tf.browser
