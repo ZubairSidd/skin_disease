@@ -17,11 +17,13 @@ let TARGET_CLASSES = {
 const loadModel = async () => {
   console.log("Loading model...");
   loading.style.display = "inline-block";
+  op.style.display = "none";
   await tf.loadLayersModel("models/model.json").then(function (tf) {
     model = tf;
   });
   console.log("Model loaded");
   loading.style.display = "none";
+  op.style.display = "block";
   let image = document.getElementById("image-upload-preview");
 
   let tensorImg = tf.browser
